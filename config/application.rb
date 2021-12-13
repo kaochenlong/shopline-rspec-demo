@@ -11,6 +11,18 @@ module ShoplineRspecDemo
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    config.generators do |g|
+      g.helper false
+      g.assets false
+
+      g.test_framework :rspec
+      g.helper_specs false
+      g.controller_specs false
+      g.view_specs false
+      g.routing_specs false
+      g.request_specs false
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
