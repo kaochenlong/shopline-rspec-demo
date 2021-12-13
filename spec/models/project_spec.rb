@@ -7,7 +7,6 @@ RSpec.describe Project, type: :model do
   #   @user = User.create(email: 'eddie@5xcampus.com', password: '12345678')
   # end
 
-
   it "自己的專案不能同名" do
     user.projects.create(name: 'Hello World')
     new_project = user.projects.build(name: 'Hello World')
@@ -16,8 +15,8 @@ RSpec.describe Project, type: :model do
   end
 
   it "不同人的專案可以同名" do
-    user1 = User.create(email: 'eddie@5xcampus.com', password: '12345678')
-    user2 = User.create(email: 'dev@5xcampus.com', password: '12345678')
+    user1 = create(:user)
+    user2 = create(:user)
 
     user1.projects.create(name: 'Hello World')
     new_project = user2.projects.build(name: 'Hello World')
