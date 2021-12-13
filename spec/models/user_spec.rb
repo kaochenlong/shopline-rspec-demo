@@ -24,4 +24,9 @@ RSpec.describe User, type: :model do
 
     expect(new_user).not_to be_valid
   end
+
+  it "can display username" do
+    user = User.create(email: 'eddie@5xcampus.com', password: '12345678')
+    expect(user.display_name).to eq 'eddie'
+  end
 end
