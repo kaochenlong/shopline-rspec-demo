@@ -1,10 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  it "自己的專案不能同名" do
-    user = User.create(email: 'eddie@5xcampus.com', password: '12345678')
-    user.projects.create(name: 'Hello World')
+  include_context "user setup"
 
+  # before(:each) do
+  #   @user = User.create(email: 'eddie@5xcampus.com', password: '12345678')
+  # end
+
+
+  it "自己的專案不能同名" do
+    user.projects.create(name: 'Hello World')
     new_project = user.projects.build(name: 'Hello World')
 
     expect(new_project).not_to be_valid
@@ -21,7 +26,6 @@ RSpec.describe Project, type: :model do
   end
 
   it "can search project by keyword" do
-    user = User.create(email: 'dev@5xcampus.com', password: '12345678')
     p1 = user.projects.create(name: 'hello')
     p2 = user.projects.create(name: 'world')
     p3 = user.projects.create(name: 'hey')
